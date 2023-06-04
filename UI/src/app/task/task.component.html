@@ -1,0 +1,21 @@
+<div class="wrapper sticky">
+    <nav class="navbar-fixed-top">
+      <ul>
+          <li><a (click)="createAction()">Create Task</a></li>
+          <li><a (click)="SignOut()">Sign Out</a></li>
+      </ul>
+    </nav>
+  </div>
+
+<h2>Task List</h2>
+<mat-card *ngFor="let task of tasks">
+  <mat-card-content>
+    <div><strong>Name:</strong> {{ task.name }}</div>
+    <div><strong>Description:</strong> {{ task.description }}</div>
+    <div><strong>Due Date:</strong> {{ task.due_date }}</div>
+    <div><strong>Created At:</strong> {{ task.created_at }}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="deleteTask(task.id)">Delete</button>
+  </mat-card-actions>
+</mat-card>

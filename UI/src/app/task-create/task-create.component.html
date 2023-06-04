@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">Add Task</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="taskForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error *ngIf="taskForm.controls.name.touched && taskForm.controls.name.invalid">
+                    <span *ngIf="taskForm.controls.name.errors.required">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description" required>
+                <mat-error *ngIf="taskForm.controls.description.touched && taskForm.controls.description.invalid">
+                    <span *ngIf="taskForm.controls.description.errors.required">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Due date (yyyy-mm-dd)</mat-label>
+                <input matInput formControlName="due_date" required>
+                <mat-error *ngIf="taskForm.controls.due_date.touched && taskForm.controls.due_date.invalid">
+                    <span *ngIf="taskForm.controls.due_date.errors.required">This field is mandatory.</span>
+
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type = "submit" (click)="handleSubmit()" [disabled]="!(taskForm.valid && taskForm.dirty)">Create</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>
